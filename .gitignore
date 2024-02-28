@@ -24,3 +24,7 @@
 ###< symfony/asset-mapper ###
 
 /docker/db/data
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

@@ -3,18 +3,20 @@
 namespace Whipo\Shop\Modules\Product\Domain\Entity;
 
 
+use Symfony\Component\Uid\Uuid;
+
 class Product
 {
-    private ?int $id = null;
+    private Uuid $uuid;
 
-    private ?string $name = null;
+    private string $name;
 
-    public function getId(): ?int
+    public function getUuid(): Uuid
     {
-        return $this->id;
+        return $this->uuid;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }

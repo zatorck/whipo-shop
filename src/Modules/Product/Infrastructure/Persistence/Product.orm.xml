@@ -4,9 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Whipo\Shop\Modules\Product\Domain\Entity\Product" table="product">
-        <id name="id" type="integer" column="id">
-            <generator/>
-        </id>
+        <id name="uuid" type="uuid"/>
         <field name="name" length="255"/>
     </entity>
 </doctrine-mapping>
