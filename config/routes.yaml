@@ -1,5 +1,5 @@
 controllers:
     resource:
         path: ../src/UI/Controller/
-        namespace: App\Controller
+        namespace: Whipo\Shop\UI\Controller
     type: attribute

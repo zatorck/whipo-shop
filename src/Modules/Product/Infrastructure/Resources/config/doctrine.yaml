@@ -1,0 +1,9 @@
+doctrine:
+  orm:
+    mappings:
+      Product:
+        type: xml
+        is_bundle: false
+        dir: '%kernel.project_dir%/src/Modules/Product/Infrastructure/Persistence'
+        prefix: 'Whipo\Shop\Modules\Product\Domain\Entity'
+        alias: Product

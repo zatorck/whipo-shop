@@ -5,12 +5,13 @@ RUN apt-get update && apt-get install -y \
         unzip \
         git \
         libicu-dev \
+        libpq-dev \
         && docker-php-ext-install \
         intl \
         zip \
         pdo \
         pdo_mysql \
-        && pecl install apcu \
+        pdo_pgsql \
         && docker-php-ext-enable apcu
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
