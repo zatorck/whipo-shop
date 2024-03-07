@@ -43,6 +43,8 @@
         "symfony/validator": "6.4.*",
         "symfony/web-link": "6.4.*",
         "symfony/yaml": "6.4.*",
+        "symfonycasts/sass-bundle": "^0.6.0",
+        "symfonycasts/tailwind-bundle": "^0.5.1",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
@@ -74,6 +76,7 @@
         "symfony/polyfill-php81": "*"
     },
     "scripts": {
+        "assets:watch": "php bin/console tailwind:build --watch -v & php bin/console sass:build --watch -v",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",

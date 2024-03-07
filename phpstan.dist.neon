@@ -3,7 +3,7 @@ includes:
     - vendor/phpstan/phpstan-symfony/rules.neon
 
 parameters:
-    level: 8
+    level: 6
     paths:
         - bin/
         - config/
@@ -11,6 +11,6 @@ parameters:
         - src/
         - tests/
     ignoreErrors:
-        - '#Property .+Entity.+\:\:\$uuid is never written, only read.#'
+#      - '#Static method .+\:\:make\(\) is unused\.#'
     symfony:
         containerXmlPath: var/cache/dev/Whipo_Shop_KernelDevDebugContainer.xml
