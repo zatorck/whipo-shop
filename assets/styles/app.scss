@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'mixins';
+
+body {
+  font-family: "Roboto", sans-serif;
+  @apply bg-gray-900 text-white
+}
+
 body {
 }
 
