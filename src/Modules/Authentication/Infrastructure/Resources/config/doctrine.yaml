@@ -1,0 +1,9 @@
+doctrine:
+  orm:
+    mappings:
+      Authentication:
+        type: xml
+        is_bundle: false
+        dir: '%kernel.project_dir%/src/Modules/Authentication/Infrastructure/Persistence'
+        prefix: 'Whipo\Shop\Modules\Authentication\Domain\Entity'
+        alias: Authentication

@@ -3,7 +3,7 @@
 namespace Whipo\Shop\Modules\Product\Domain\Entity;
 
 
-use Symfony\Component\Uid\Uuid;
+use Whipo\Shop\Modules\Core\Domain\Uuid;
 
 class Product
 {

@@ -15,4 +15,19 @@ class AppController extends AbstractController
             'controller_name' => 'AppController',
         ]);
     }
+
+    #[Route('/admin', name: 'admin')]
+    public function admin(): Response
+    {
+        return $this->render('home.html.twig', [
+            'controller_name' => 'AppController',
+        ]);
+    }
+    #[Route('/css/s', name: 'css')]
+    public function css(): Response
+    {
+        return $this->render('home.html.twig', [
+            'controller_name' => 'AppController',
+        ]);
+    }
 }

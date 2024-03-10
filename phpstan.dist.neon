@@ -12,5 +12,6 @@ parameters:
         - tests/
     ignoreErrors:
 #      - '#Static method .+\:\:make\(\) is unused\.#'
+#      - '#Property .+\:\:\$uuid is never read, only written\.#'
     symfony:
         containerXmlPath: var/cache/dev/Whipo_Shop_KernelDevDebugContainer.xml
