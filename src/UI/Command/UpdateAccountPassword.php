@@ -10,9 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Webmozart\Assert\Assert;
-use Whipo\Shop\Modules\Authentication\Application\Service\PasswordHash;
 use Symfony\Component\Console\Input\InputArgument;
-use Whipo\Shop\Modules\Authentication\Domain\Repository\AccountRepository;
+use Whipo\Shop\Modules\Authentication\Domain\Exception\AccountNotFoundException;
 use Whipo\Shop\Modules\Authentication\Domain\Service\AccountUpdatePassword;
 
 #[AsCommand(
@@ -22,7 +21,7 @@ use Whipo\Shop\Modules\Authentication\Domain\Service\AccountUpdatePassword;
 class UpdateAccountPassword extends Command
 {
     public function __construct(
-        private AccountUpdatePassword $accountUpdatePassword,
+        private readonly AccountUpdatePassword $accountUpdatePassword,
     ) {
         parent::__construct();
     }
@@ -33,10 +32,14 @@ class UpdateAccountPassword extends Command
             ->addArgument('email', InputArgument::REQUIRED);
     }
 
+    /**
+     * @throws AccountNotFoundException
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $email = $input->getArgument('email');
         Assert::email($email, 'Please provide valid email value');
+        Assert::string($email);
 
         $io = new SymfonyStyle($input, $output);
 
@@ -44,6 +47,8 @@ class UpdateAccountPassword extends Command
         $question->setHidden(true);
 
         $value = $io->askQuestion($question);
+
+        Assert::string($value, 'Please provide string password');
 
         $this->accountUpdatePassword->handle($email, $value);
 

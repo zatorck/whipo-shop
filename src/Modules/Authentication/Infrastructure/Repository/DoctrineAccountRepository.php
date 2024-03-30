@@ -6,9 +6,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use Whipo\Shop\Modules\Authentication\Domain\Entity\Account;
 use Whipo\Shop\Modules\Authentication\Domain\Repository\AccountRepository;
 
-class DoctrineAccountRepository implements AccountRepository
+/** @noinspection PhpUnused */
+readonly class DoctrineAccountRepository implements AccountRepository
 {
-    public function __construct(private readonly EntityManagerInterface $em)
+    public function __construct(private EntityManagerInterface $em)
     {
     }
 
@@ -23,10 +24,13 @@ class DoctrineAccountRepository implements AccountRepository
             ->setParameter('email', $email)
             ->setMaxResults(1);
 
-        return $qb->getQuery()->getOneOrNullResult();
+        /** @var ?Account $account */
+        $account = $qb->getQuery()->getOneOrNullResult();
+
+        return $account;
     }
 
-    public function save(Account $account, bool $flush = true): void
+    public function save($account, bool $flush = true): void
     {
         $this->em->persist($account);
 

@@ -2,7 +2,7 @@
 
 namespace Whipo\Shop\Modules\Authentication\Domain\Entity;
 
-use Symfony\Component\Uid\Uuid;
+use Whipo\Shop\Modules\Core\Domain\Uuid;
 use Whipo\Shop\Modules\Authentication\Domain\ValueObject\Password;
 use Whipo\Shop\Modules\Authentication\Domain\ValueObject\Roles;
 

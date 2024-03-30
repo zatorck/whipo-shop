@@ -2,12 +2,11 @@
 
 namespace Whipo\Shop\Modules\Authentication\Infrastructure\Account;
 
-use Exception;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Whipo\Shop\Modules\Authentication\Domain\Entity\Account;
 
-class SymfonyAccount implements UserInterface, PasswordAuthenticatedUserInterface
+readonly class SymfonyAccount implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
     public function __construct(private Account $account)
@@ -38,15 +37,7 @@ class SymfonyAccount implements UserInterface, PasswordAuthenticatedUserInterfac
         return $this->account->password->password;
     }
 
-    public function setPassword(string $password): self
+    public function eraseCredentials(): void
     {
-        $this->account->password->password = $password;
-
-        return $this;
-    }
-
-    public function eraseCredentials()
-    {
-        throw new Exception(sprintf('Implement me %s::%s', __CLASS__, __METHOD__));
     }
 }

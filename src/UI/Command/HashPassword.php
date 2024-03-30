@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Webmozart\Assert\Assert;
 use Whipo\Shop\Modules\Authentication\Domain\Service\PasswordHash;
 
 #[AsCommand(
@@ -18,7 +19,7 @@ use Whipo\Shop\Modules\Authentication\Domain\Service\PasswordHash;
 class HashPassword extends Command
 {
     public function __construct(
-        private PasswordHash $passwordHash,
+        private readonly PasswordHash $passwordHash,
     ) {
         parent::__construct();
     }
@@ -31,6 +32,8 @@ class HashPassword extends Command
         $question->setHidden(true);
 
         $value = $io->askQuestion($question);
+
+        Assert::string($value, 'Please provide string password');
 
         $io->success('Password hashed successfully');
         $output->writeln('----- Value of hashed password:');

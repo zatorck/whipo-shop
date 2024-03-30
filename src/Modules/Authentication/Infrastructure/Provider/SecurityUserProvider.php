@@ -11,11 +11,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Whipo\Shop\Modules\Authentication\Domain\Repository\AccountRepository;
 use Whipo\Shop\Modules\Authentication\Infrastructure\Account\SymfonyAccount;
+use function get_class;
 
 /**
  * @implements UserProviderInterface<SymfonyAccount>
+ * @noinspection PhpUnused
  */
-class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInterface
+readonly class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInterface
 {
 
     public function __construct(private AccountRepository $accountRepository)
@@ -30,7 +32,7 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (!$user instanceof SymfonyAccount) {
-            throw new UnsupportedUserException(sprintf('Invalid user class %s', \get_class($user)));
+            throw new UnsupportedUserException(sprintf('Invalid user class %s', get_class($user)));
         }
 
         $userEntity = $this->accountRepository->findOneOrNullByEmail($user->getUserIdentifier());
@@ -56,6 +58,6 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
-        throw new \Exception(sprintf('Implement me %s::%s', __CLASS__, __METHOD__));
+        throw new Exception(sprintf('Implement me %s::%s', __CLASS__, __METHOD__));
     }
 }

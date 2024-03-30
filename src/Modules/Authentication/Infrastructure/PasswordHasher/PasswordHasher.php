@@ -6,7 +6,7 @@ use SensitiveParameter;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface as SymfonyPasswordHasher;
 use Whipo\Shop\Modules\Authentication\Application\PasswordHasher\PasswordHasher as ApplicationPasswordHasher;
 
-class PasswordHasher implements ApplicationPasswordHasher
+readonly class PasswordHasher implements ApplicationPasswordHasher
 {
     public function __construct(private SymfonyPasswordHasher $symfonyPasswordHasher)
     {

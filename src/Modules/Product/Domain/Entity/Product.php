@@ -2,7 +2,6 @@
 
 namespace Whipo\Shop\Modules\Product\Domain\Entity;
 
-
 use Whipo\Shop\Modules\Core\Domain\Uuid;
 
 class Product

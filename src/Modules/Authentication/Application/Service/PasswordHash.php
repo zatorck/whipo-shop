@@ -6,7 +6,8 @@ use SensitiveParameter;
 use Whipo\Shop\Modules\Authentication\Application\PasswordHasher\PasswordHasherFactory;
 use Whipo\Shop\Modules\Authentication\Domain\Service\PasswordHash as PasswordHashInterface;
 
-class PasswordHash implements PasswordHashInterface
+/** @noinspection PhpUnused */
+readonly class PasswordHash implements PasswordHashInterface
 {
     public function __construct(private PasswordHasherFactory $passwordHasherFactory)
     {

@@ -6,7 +6,7 @@ use SensitiveParameter;
 use Whipo\Shop\Modules\Authentication\Domain\Exception\AccountNotFoundException;
 use Whipo\Shop\Modules\Authentication\Domain\Repository\AccountRepository;
 
-class AccountUpdatePassword
+readonly class AccountUpdatePassword
 {
     public function __construct(private AccountRepository $accountRepository, private PasswordHash $passwordHash)
     {
@@ -21,11 +21,11 @@ class AccountUpdatePassword
     ): void {
         $account = $this->accountRepository->findOneOrNullByEmail($accountEmail);
 
-        if (!$account) {
+        if (null === $account) {
             throw new AccountNotFoundException(sprintf('Account with email: %s not found', $accountEmail));
         }
 
-        $account->setPassword($this->passwordHash->handle($password));
+        $account->password->password = $this->passwordHash->handle($password);
 
         $this->accountRepository->save($account);
     }
