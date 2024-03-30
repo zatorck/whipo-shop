@@ -4,6 +4,12 @@ doctrine:
       Authentication:
         type: xml
         is_bundle: false
-        dir: '%kernel.project_dir%/src/Modules/Authentication/Infrastructure/Persistence'
+        dir: '%kernel.project_dir%/src/Modules/Authentication/Infrastructure/Entity'
         prefix: 'Whipo\Shop\Modules\Authentication\Domain\Entity'
         alias: Authentication
+      AuthenticationValueObject:
+        type: xml
+        is_bundle: false
+        dir: '%kernel.project_dir%/src/Modules/Authentication/Infrastructure/ValueObject'
+        prefix: 'Whipo\Shop\Modules\Authentication\Domain\ValueObject'
+        alias: AuthenticationValueObject

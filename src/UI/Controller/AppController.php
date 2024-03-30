@@ -11,20 +11,12 @@ class AppController extends AbstractController
     #[Route('/', name: 'home')]
     public function home(): Response
     {
-        return $this->render('home.html.twig', [
-            'controller_name' => 'AppController',
-        ]);
+
+        return $this->redirectToRoute('admin');
     }
 
     #[Route('/admin', name: 'admin')]
     public function admin(): Response
-    {
-        return $this->render('home.html.twig', [
-            'controller_name' => 'AppController',
-        ]);
-    }
-    #[Route('/css/s', name: 'css')]
-    public function css(): Response
     {
         return $this->render('home.html.twig', [
             'controller_name' => 'AppController',

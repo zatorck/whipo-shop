@@ -4,6 +4,6 @@ doctrine:
       Product:
         type: xml
         is_bundle: false
-        dir: '%kernel.project_dir%/src/Modules/Product/Infrastructure/Persistence'
+        dir: '%kernel.project_dir%/src/Modules/Product/Infrastructure/Entity'
         prefix: 'Whipo\Shop\Modules\Product\Domain\Entity'
         alias: Product
